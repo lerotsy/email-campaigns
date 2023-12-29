@@ -24,9 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-// Campaign routes
-Route::apiResource('campaigns', CampaignsController::class);
-Route::put('/campaigns/{campaign}/schedule', [CampaignsController::class, 'schedule']);
+Route::middleware('auth:sanctum')->group(function () {
+    // Campaign routes
+    Route::apiResource('campaigns', CampaignsController::class);
+    Route::put('/campaigns/{campaign}/schedule', [CampaignsController::class, 'schedule']);
 
-// Template routes
-Route::apiResource('templates', TemplatesController::class);
+    // Template routes
+    Route::apiResource('templates', TemplatesController::class);
+});

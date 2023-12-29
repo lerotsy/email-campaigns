@@ -1,66 +1,67 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Email Campaign Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project is a comprehensive Email Campaign Management System developed using Laravel. It offers a full suite of tools for managing email campaigns, templates, user authentication, and analytics. The system emphasizes reliability and scalability with Laravel Queues.
 
-## About Laravel
+## Key Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Authentication Endpoints:** Secure user registration, login, and session management.
+- **Campaign Management Endpoints:** Full management capabilities for email campaigns including creation, update, deletion, listing, scheduling, and saving drafts.
+- **Email Sending Queue Endpoints:** A robust queuing system for efficient email batch processing and progress monitoring.
+- **Template Management Endpoints:** Allows for the creation, update, deletion, and listing of email templates.
+- **Analytics Endpoints:** Provides detailed campaign analytics such as open rates and click-through rates, updated through background jobs.
+- **Laravel Queue Implementations:** Efficient email processing with Laravel's queue system including handling retries and failures.
+- **Scheduled Campaigns with Queues:** Automated queuing of scheduled campaigns.
+- **Analytics Calculation in Background Jobs:** Regular updates of campaign analytics using background jobs.
+- **Queue Management Endpoints:** Tools for monitoring and managing the queue, including handling of failed jobs.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## System Requirements
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP ^7.3|^8.0
+- Laravel Framework ^8.0
+- Database (MySQL, PostgreSQL, SQLite, SQL Server)
+- Laravel-compatible Queue backend (Redis, Database, SQS, etc.)
+- Email service provider (SMTP, Mailgun, etc.)
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Clone the repository:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Usage
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Access the system through the Laravel server URL (`http://localhost:8000`). Utilize the API endpoints for managing users, campaigns, templates, and analytics.
 
-### Premium Partners
+## API Endpoints
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Authentication
+- `POST /register`: Register a new user.
+- `POST /login`: Login user and start a session.
 
-## Contributing
+### Campaign Management
+- `POST /campaigns`: Create a new campaign.
+- `GET /campaigns`: List all campaigns.
+- `PUT /campaigns/{id}`: Update a campaign.
+- `DELETE /campaigns/{id}`: Delete a campaign.
+- `PUT /campaigns/{id}/schedule`: Schedule a campaign.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Template Management
+- `POST /templates`: Create a new template.
+- `GET /templates`: List all templates.
+- `PUT /templates/{id}`: Update a template.
+- `DELETE /templates/{id}`: Delete a template.
 
-## Code of Conduct
+### Email Queue
+- `POST /queue/send`: Queue emails for sending.
+- `GET /queue/status`: Check the status of the email sending queue.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Analytics
+- `GET /analytics/{campaignId}`: Retrieve analytics for a campaign.
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Queue Management
+- `GET /queue/jobs`: View jobs in the queue.
+- `POST /queue/jobs/{id}/retry`: Retry a failed job.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](LICENSE).

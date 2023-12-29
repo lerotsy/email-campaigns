@@ -22,17 +22,11 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        try {
-            $this->validate($request, [
-                'name' => 'required|string:max:255',
-                'email' => 'required|string|email|unique:users',
-                'password' => 'required|string|min:10|confirmed',
-            ]);
-        } catch (ValidationException $e) {
-            return response()->json([
-                'error' => $e->getMessage(),
-            ], 401);
-        }
+        $this->validate($request, [
+            'name' => 'required|string:max:255',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string|min:10|confirmed',
+        ]);
 
         $user = User::create([
             'name' => $request->name,
@@ -50,16 +44,10 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        try {
-            $request->validate([
-                'email' => 'required',
-                'password' => 'required',
-            ]);
-        } catch (ValidationException $e) {
-            return response()->json([
-                'error' => 'missing email or password'
-            ], 400);
-        }
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
 
         $user = User::where('email', $request->email)->first();
 

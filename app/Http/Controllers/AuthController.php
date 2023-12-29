@@ -68,8 +68,11 @@ class AuthController extends Controller
                 'error' => 'The provided credentials are incorrect'
             ], 400);
         }
+
+        $token = $user->createToken('auth_token')->plainTextToken;
         return response()->json([
-            'user' => $user
+            'token_type' => 'Bearer',
+            'access_token' => $token,
         ]);
     }
 }

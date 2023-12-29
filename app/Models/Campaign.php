@@ -19,6 +19,7 @@ class Campaign extends Model
         'scheduled_at',
         'status',
     ];
+    // @TODO add enum for status
 
     public function user()
     {

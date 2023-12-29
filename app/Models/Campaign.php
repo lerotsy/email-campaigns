@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,5 +28,10 @@ class Campaign extends Model
     public function template()
     {
         return $this->belongsTo(Template::class);
+    }
+
+    public function setScheduledAtAttribute($value)
+    {
+        $this->attributes['scheduled_at'] = Carbon::parse($value);
     }
 }

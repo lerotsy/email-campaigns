@@ -16,17 +16,9 @@ This project is a comprehensive Email Campaign Management System developed using
 
 ## System Requirements
 
-- PHP ^7.3|^8.0
-- Laravel Framework ^8.0
-- Database (MySQL, PostgreSQL, SQLite, SQL Server)
-- Laravel-compatible Queue backend (Redis, Database, SQS, etc.)
-- Email service provider (SMTP, Mailgun, etc.)
-
-## Installation
-
-1. Clone the repository:
-
-
+- PHP 8.0
+- Laravel Framework 10.0
+- Database (MySQL)
 
 ## Usage
 

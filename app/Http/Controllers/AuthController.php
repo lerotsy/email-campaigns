@@ -47,4 +47,29 @@ class AuthController extends Controller
             'user' => $user
         ]);
     }
+
+    public function login(Request $request)
+    {
+        try {
+            $request->validate([
+                'email' => 'required',
+                'password' => 'required',
+            ]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'error' => 'missing email or password'
+            ], 400);
+        }
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response()->json([
+                'error' => 'The provided credentials are incorrect'
+            ], 400);
+        }
+        return response()->json([
+            'user' => $user
+        ]);
+    }
 }

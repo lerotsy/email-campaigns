@@ -16,11 +16,15 @@ class Campaign extends Model
         'name',
         'subject',
         'content',
+        'recipients',
         'scheduled_at',
         'status',
     ];
     // @TODO add enum for status
 
+    protected $casts = [
+        'recipients' => 'array',
+    ];
     public function user()
     {
         return $this->belongsTo(User::class);

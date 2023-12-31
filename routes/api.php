@@ -27,7 +27,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     // Campaign routes
     Route::apiResource('campaigns', CampaignsController::class);
-    Route::put('/campaigns/{campaign}/schedule', [CampaignsController::class, 'schedule']);
+    Route::put('/campaigns/{campaign}/launch', [CampaignsController::class, 'launch']);
 
     // Template routes
     Route::apiResource('templates', TemplatesController::class);

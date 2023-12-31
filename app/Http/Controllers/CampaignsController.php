@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendBatchEmailsJob;
 use App\Models\Campaign;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
 
 class CampaignsController extends Controller
 {
@@ -63,19 +62,24 @@ class CampaignsController extends Controller
         return response()->json(null, 204);
     }
 
-    public function schedule(Request $request, Campaign $campaign)
+    public function launch(Request $request, Campaign $campaign)
     {
         $request->validate([
-            'scheduled_at' => 'required|date|after:now',
+            'status' => [
+                'required',
+                'not_in:' . implode(',', [Campaign::STATUS_SENT, Campaign::STATUS_DRAFT]),
+            ],
         ]);
 
-        $campaign->scheduled_at = $request->scheduled_at;
-        $campaign->status = 'scheduled';
-        $campaign->save();
+        try {
+            SendBatchEmailsJob::dispatch($campaign->id);
 
-        // TODO handle with transaction
-        // dispatch(new ScheduleCampaignJob($campaign));
+            $campaign->status = Campaign::STATUS_SENT;
+            $campaign->save();
 
-        return response()->json(['message' => 'Campaign scheduling initiated', 'campaign' => $campaign]);
+            return response()->json(['message' => 'Campaign launched successfully', 'campaign' => $campaign]);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Failed to launch the campaign'], 500);
+        }
     }
 }

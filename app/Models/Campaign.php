@@ -10,6 +10,12 @@ class Campaign extends Model
 {
     use HasFactory;
 
+    const STATUS_SCHEDULED = 'scheduled';
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_DRAFT = 'draft';
+    const STATUS_SENT = 'sent';
+    const STATUS_FAILED = 'failed';
+
     protected $fillable = [
         'user_id',
         'template_id',
@@ -20,7 +26,6 @@ class Campaign extends Model
         'scheduled_at',
         'status',
     ];
-    // @TODO add enum for status
 
     protected $casts = [
         'recipients' => 'array',

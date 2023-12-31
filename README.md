@@ -1,6 +1,6 @@
 # Email Campaign Management System
 
-This project is a comprehensive Email Campaign Management System developed using Laravel. It offers a full suite of tools for managing email campaigns, templates, user authentication, and analytics. The system emphasizes reliability and scalability with Laravel Queues.
+This project is a Email Campaign Management System developed using Laravel. It offers a variety of functionalities for managing email campaigns, templates, user authentication. It also uses Laravel's Queues system to send both batch and individual emails.
 
 ## Key Features
 
@@ -8,21 +8,16 @@ This project is a comprehensive Email Campaign Management System developed using
 - **Campaign Management Endpoints:** Full management capabilities for email campaigns including creation, update, deletion, listing, scheduling, and saving drafts.
 - **Email Sending Queue Endpoints:** A robust queuing system for efficient email batch processing and progress monitoring.
 - **Template Management Endpoints:** Allows for the creation, update, deletion, and listing of email templates.
-- **Analytics Endpoints:** Provides detailed campaign analytics such as open rates and click-through rates, updated through background jobs.
-- **Laravel Queue Implementations:** Efficient email processing with Laravel's queue system including handling retries and failures.
-- **Scheduled Campaigns with Queues:** Automated queuing of scheduled campaigns.
-- **Analytics Calculation in Background Jobs:** Regular updates of campaign analytics using background jobs.
-- **Queue Management Endpoints:** Tools for monitoring and managing the queue, including handling of failed jobs.
 
 ## System Requirements
 
-- PHP 8.0
-- Laravel Framework 10.0
+- PHP 8.1.2
+- Laravel Framework 10.39.0
 - Database (MySQL)
 
 ## Usage
 
-Access the system through the Laravel server URL (`http://localhost:8000`). Utilize the API endpoints for managing users, campaigns, templates, and analytics.
+Access the system through the Laravel server URL (`http://localhost:8000`). Utilize the API endpoints for managing users, campaigns, templates.
 
 ## API Endpoints
 
@@ -35,7 +30,7 @@ Access the system through the Laravel server URL (`http://localhost:8000`). Util
 - `GET /campaigns`: List all campaigns.
 - `PUT /campaigns/{id}`: Update a campaign.
 - `DELETE /campaigns/{id}`: Delete a campaign.
-- `PUT /campaigns/{id}/schedule`: Schedule a campaign.
+- `PUT /campaigns/{id}/launch`: Launch a campaign.
 
 ### Template Management
 - `POST /templates`: Create a new template.
@@ -46,13 +41,6 @@ Access the system through the Laravel server URL (`http://localhost:8000`). Util
 ### Email Queue
 - `POST /queue/send`: Queue emails for sending.
 - `GET /queue/status`: Check the status of the email sending queue.
-
-### Analytics
-- `GET /analytics/{campaignId}`: Retrieve analytics for a campaign.
-
-### Queue Management
-- `GET /queue/jobs`: View jobs in the queue.
-- `POST /queue/jobs/{id}/retry`: Retry a failed job.
 
 ## License
 

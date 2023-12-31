@@ -6,7 +6,7 @@ This project is a Email Campaign Management System developed using Laravel. It o
 
 - **Authentication Endpoints:** Secure user registration, login, and session management.
 - **Campaign Management Endpoints:** Full management capabilities for email campaigns including creation, update, deletion, listing, scheduling, and saving drafts.
-- **Email Sending Queue Endpoints:** A robust queuing system for efficient email batch processing and progress monitoring.
+- **Email Sending Queue Endpoints:** A queuing system for email batch processing.
 - **Template Management Endpoints:** Allows for the creation, update, deletion, and listing of email templates.
 
 ## System Requirements

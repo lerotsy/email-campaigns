@@ -39,8 +39,8 @@ Access the system through the Laravel server URL (`http://localhost:8000`). Util
 - `DELETE /templates/{id}`: Delete a template.
 
 ## Potential improvements
-- Analytics endpoints: retrieve campaign analytics like open rates and click-through rates
-- Queue management endpoints: monitor and manage queue (like viewing failed jobs, retry jobs)
+- **Analytics endpoints**: retrieve campaign analytics like open rates and click-through rates
+- **Queue management endpoints**: monitor and manage queue (like viewing failed jobs, retry jobs)
 
 ## License
 

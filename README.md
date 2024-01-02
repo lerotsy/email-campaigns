@@ -1,11 +1,11 @@
 # Email Campaign Management System
 
-This project is a Email Campaign Management System developed using Laravel. It offers a variety of functionalities for managing email campaigns, templates, user authentication. It also uses Laravel's Queues system to send both batch and individual emails.
+This project is an API for Email Campaign Management System developed using Laravel. It offers a variety of functionalities for managing email campaigns, templates, user authentication. It also uses Laravel's Queues system to send both batch and individual emails.
 
 ## Key Features
 
 - **Authentication Endpoints:** Secure user registration, login, and session management.
-- **Campaign Management Endpoints:** Full management capabilities for email campaigns including creation, update, deletion, listing, scheduling, and saving drafts.
+- **Campaign Management Endpoints:** Email campaign management including creation, update, deletion, listing.
 - **Email Sending Queue Endpoints:** A queuing system for email batch processing.
 - **Template Management Endpoints:** Allows for the creation, update, deletion, and listing of email templates.
 
@@ -38,9 +38,9 @@ Access the system through the Laravel server URL (`http://localhost:8000`). Util
 - `PUT /templates/{id}`: Update a template.
 - `DELETE /templates/{id}`: Delete a template.
 
-### Email Queue
-- `POST /queue/send`: Queue emails for sending.
-- `GET /queue/status`: Check the status of the email sending queue.
+## Potential improvements
+- Analytics endpoints: retrieve campaign analytics like open rates and click-through rates
+- Queue management endpoints: monitor and manage queue (like viewing failed jobs, retry jobs)
 
 ## License
 
